@@ -1,0 +1,130 @@
+body {
+  background-color: #f8f8f8;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: #001f4d;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.form-container h2 {
+  margin-top: 0;
+  font-size: 24px;
+  text-align: center;
+  color: #001f4d;
+}
+
+.form-container input {
+  width: 94%;
+  /* margin-bottom: 15px; */
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #f8f8f8;
+  color: #001f4d;
+  border: 1px solid #ccc;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  color: red;
+}
+
+.form-container span {
+  font-size: 0.8rem;
+}
+
+.form-container select {
+  width: 100%;
+  /* margin-bottom: 15px; */
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #f8f8f8;
+  color: #001f4d;
+  border: 1px solid #ccc;
+}
+
+.form-container button {
+  background-color: #001f4d;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 3px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #001133;
+}
+
+.form-container .forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-container .forgot-password a {
+  color: #ff0000;
+}
+
+.features {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.features h3 {
+  color: #001f4d;
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.features p {
+  color: #001f4d;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.call-to-action {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.call-to-action a {
+  background-color: #001f4d;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.call-to-action a:hover {
+  background-color: #001133;
+}
