@@ -13,7 +13,7 @@ app.use(express.json());
 // Middleware to fix cors
 app.use(
   cors({
-    origin: "https://joshua-login-signup-frontend.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
