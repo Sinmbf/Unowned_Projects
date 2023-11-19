@@ -21,7 +21,7 @@ const Header = () => {
       <p>Empowering Laboratories with Cutting-edge Technology</p>
       <div className="links">
         {auth?.user && auth?.isLoggedIn ? (
-          <Link className="link-item" to="/login" onClick={handleClickLogout}>
+          <Link className="logout-link" to="/login" onClick={handleClickLogout}>
             Logout
           </Link>
         ) : (
