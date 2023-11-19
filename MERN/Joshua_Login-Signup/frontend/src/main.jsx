@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = "https://joshua-login-signup-backend.onrender.com/api";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
