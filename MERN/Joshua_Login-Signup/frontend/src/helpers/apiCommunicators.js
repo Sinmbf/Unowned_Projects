@@ -8,9 +8,6 @@ export const loginUser = async (username, password, userType) => {
       password,
       userType,
     });
-    if (response.status !== 200) {
-      throw new Error("Unable to login");
-    }
     const data = response.data;
     return data;
   } catch (error) {
@@ -26,9 +23,6 @@ export const signupUser = async (username, password, userType) => {
       password,
       userType,
     });
-    if (response.status !== 201) {
-      throw new Error("Unable to register account");
-    }
     const data = response.data;
     return data;
   } catch (error) {
@@ -40,9 +34,6 @@ export const signupUser = async (username, password, userType) => {
 export const checkAuthStatus = async () => {
   try {
     const response = await axios.get("/user/auth-status");
-    if (response.status !== 200) {
-      throw new Error("Unable to check auth status");
-    }
     const data = response.data;
     return data;
   } catch (error) {
@@ -54,9 +45,6 @@ export const checkAuthStatus = async () => {
 export const logoutUser = async () => {
   try {
     const response = await axios.get("/user/logout");
-    if (response.status !== 200) {
-      throw new Error("Unable to logout");
-    }
     const data = response.data;
     return data;
   } catch (error) {
