@@ -8,7 +8,7 @@ export const loginUser = async (username, password, userType) => {
       password,
       userType,
     });
-    const data = response.data;
+    const data = await response.data;
     return data;
   } catch (error) {
     console.log(error);
@@ -23,7 +23,7 @@ export const signupUser = async (username, password, userType) => {
       password,
       userType,
     });
-    const data = response.data;
+    const data = await response.data;
     return data;
   } catch (error) {
     console.log(error);
@@ -34,7 +34,7 @@ export const signupUser = async (username, password, userType) => {
 export const checkAuthStatus = async () => {
   try {
     const response = await axios.get("/user/auth-status");
-    const data = response.data;
+    const data = await response.data;
     return data;
   } catch (error) {
     console.log(error);
@@ -45,7 +45,7 @@ export const checkAuthStatus = async () => {
 export const logoutUser = async () => {
   try {
     const response = await axios.get("/user/logout");
-    const data = response.data;
+    const data = await response.data;
     return data;
   } catch (error) {
     console.log(error);
