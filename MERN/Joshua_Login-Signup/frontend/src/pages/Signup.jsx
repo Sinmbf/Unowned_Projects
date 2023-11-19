@@ -2,10 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Features from "../components/Features";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const Signup = () => {
   const auth = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   // Function to handle submit
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -20,7 +22,10 @@ const Signup = () => {
       navigate("/");
     } catch (error) {
       toast.error("Failed to create account", { id: "signup" });
-      console.log(error);
+      setError(error.response.data);
+      setTimeout(() => {
+        setError("");
+      }, 2500);
     }
   };
   return (
@@ -30,19 +35,28 @@ const Signup = () => {
         {/* Form */}
         <form onSubmit={handleSubmitForm}>
           <div className="form-input">
-            <input type="text" name="username" placeholder="Username" />
-            <span>Incorrect credentials</span>
+            <input
+              type="email"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            <span>{error && error}</span>
           </div>
           <div className="form-input">
-            <input type="password" name="password" placeholder="Password" />
-            <span>Incorrect credentials</span>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              minLength={6}
+            />
           </div>
           <div className="form-input">
-            <select name="user-type" id="user-type">
+            <select name="user-type" id="user-type" required>
               <option value="doctor">Doctor</option>
               <option value="patient">Patient</option>
             </select>
-            <span>Incorrect credentials</span>
           </div>
 
           <button type="submit">Sign Up</button>

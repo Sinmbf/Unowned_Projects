@@ -1,11 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useNavigate } from "react-router-dom";
 import Features from "../components/Features";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();
+  const [error, setError] = useState({});
+  useEffect(() => {
+    if (auth?.user && auth?.isLoggedIn) {
+      toast.success("You are already logged in", { id: "already" });
+      return navigate("/");
+    }
+  }, [auth]);
+
+  // Function to determine type of error
+  const determineErrorType = (error) => {
+    const splitError = error.split(" ");
+    if (splitError.includes("Account")) {
+      return "username";
+    } else if (splitError.includes("credentials")) {
+      return "password";
+    } else {
+      return "user-type";
+    }
+  };
+
   // Function to handle submit
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -19,8 +41,12 @@ const Login = () => {
       toast.success("Successfully logged in", { id: "login" });
       navigate("/");
     } catch (error) {
-      toast.error("Failed to log in", { id: "login" });
-      console.log(error);
+      toast.error("Failed to login", { id: "login" });
+      const errorType = determineErrorType(error.response.data);
+      setError({ error: error.response.data, type: errorType });
+      setTimeout(() => {
+        setError({});
+      }, 2500);
     }
   };
   return (
@@ -30,19 +56,30 @@ const Login = () => {
         {/* Form */}
         <form onSubmit={handleSubmitForm}>
           <div className="form-input">
-            <input type="text" name="username" placeholder="Username" />
-            <span>Incorrect credentials</span>
+            <input
+              type="email"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            <span>{error?.type === "username" && error.error}</span>
           </div>
           <div className="form-input">
-            <input type="password" name="password" placeholder="Password" />
-            <span>Incorrect credentials</span>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              minLength={6}
+            />
+            <span>{error?.type === "password" && error.error}</span>
           </div>
           <div className="form-input">
-            <select name="user-type" id="user-type">
+            <select name="user-type" id="user-type" required>
               <option value="doctor">Doctor</option>
               <option value="patient">Patient</option>
             </select>
-            <span>Incorrect credentials</span>
+            <span>{error?.type === "user-type" && error.error}</span>
           </div>
 
           <button type="submit">Login</button>
