@@ -21,6 +21,7 @@ const Signup = () => {
       toast.success("Successfully created account", { id: "signup" });
       navigate("/");
     } catch (error) {
+      console.log(error);
       toast.error("Failed to create account", { id: "signup" });
       setError(error.response.data);
       setTimeout(() => {

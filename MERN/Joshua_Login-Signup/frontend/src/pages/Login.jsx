@@ -41,6 +41,7 @@ const Login = () => {
       toast.success("Successfully logged in", { id: "login" });
       navigate("/");
     } catch (error) {
+      console.log(error);
       toast.error("Failed to login", { id: "login" });
       const errorType = determineErrorType(error.response.data);
       setError({ error: error.response.data, type: errorType });
